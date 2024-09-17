@@ -1,9 +1,10 @@
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
+import ListaTareas from './ListaTareas.jsx'
 
 const FormularioTareas = () => {
     return (
-        <div>
+        <section>
             <Form>
                 <Form.Group className="mb-3 d-flex" controlId="formBasicEmail">
                     <Form.Control type="text" placeholder="Tarea" />
@@ -13,7 +14,8 @@ const FormularioTareas = () => {
                 </Button>
                 </Form.Group>
             </Form>
-        </div>
+            <ListaTareas></ListaTareas>
+        </section>
     );
 };
 
