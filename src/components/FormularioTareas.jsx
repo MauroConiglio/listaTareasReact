@@ -2,11 +2,19 @@ import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import ListaTareas from './ListaTareas.jsx'
 import { useForm } from 'react-hook-form'
-import { useState } from 'react'
+import { useState , useEffect } from 'react'
 
 const FormularioTareas = () => {
     const {register, handleSubmit, formState: { errors },reset} = useForm()
-    const [arrayTareas, setArrayTareas] = useState([])
+    //aqui agregue para que no se borre el local cuando actualizo la pagina
+    const leerLocalStorage = JSON.parse(localStorage.getItem('listaTareasKey')) || []
+    const [arrayTareas, setArrayTareas] = useState(leerLocalStorage)
+
+    // aqui uso useEffect
+    useEffect(()=>{
+        console.log('desde el useEffect, usando el ciclo de vida')
+        localStorage.setItem('listaTareasKey',JSON.stringify(arrayTareas))
+    }, [arrayTareas])
 
       const onSubmit = (data) =>{
         console.log(data.tarea)
